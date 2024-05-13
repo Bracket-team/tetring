@@ -3,9 +3,12 @@ package bracket.tetring.domain.store.service;
 import bracket.tetring.domain.game.domain.Game;
 import bracket.tetring.domain.game.domain.Relic;
 import bracket.tetring.domain.game.service.GameServiceHelper;
+import bracket.tetring.domain.player.domain.Player;
 import bracket.tetring.domain.player.domain.PlayerRelic;
+import bracket.tetring.domain.player.domain.PlayerRelicFound;
 import bracket.tetring.domain.player.dto.PlayerRelicDto;
 import bracket.tetring.domain.player.mapper.PlayerRelicMapper;
+import bracket.tetring.domain.player.repository.PlayerRelicFoundRepository;
 import bracket.tetring.domain.player.repository.PlayerRelicRepository;
 import bracket.tetring.domain.store.domain.Store;
 import bracket.tetring.domain.store.domain.StoreRelic;
@@ -34,6 +37,7 @@ public class StoreRelicService {
 
     private final StoreRelicRepository storeRelicRepository;
     private final PlayerRelicRepository playerRelicRepository;
+    private final PlayerRelicFoundRepository playerRelicFoundRepository;
 
     private final PlayerRelicMapper playerRelicMapper;
     private final StoreRelicMapper storeRelicMapper;
@@ -42,6 +46,7 @@ public class StoreRelicService {
     //구매 못할 경우, 돈은 그대로, 유물 정보는 null로
     @Transactional
     public PurchaseRelicDto purchaseRelic(UUID playerId, Integer slotNumber) {
+        Player player = gameServiceHelper.getPlayer(playerId);
         Game game = gameServiceHelper.getGame(playerId);
         Store store = gameServiceHelper.getStore(game);
         //구입할 유물
@@ -56,6 +61,7 @@ public class StoreRelicService {
         PlayerRelicDto playerRelicDto = null;
         boolean canBuy = false;
 
+        //유물 구입이 가능한 경우
         if(playerMoney >= relicMoney && smallestEmptySlotNumber.isPresent()) {
             canBuy = true;
             //돈 계산
@@ -72,8 +78,12 @@ public class StoreRelicService {
 
             //상점에서 유물 삭제
             storeRelicRepository.delete(storeRelic);
-        }
 
+            //유저 유물 잠금 해제
+            PlayerRelicFound relicFound = playerRelicFoundRepository.findByPlayerAndRelic(player, relic)
+                    .orElseThrow( () -> new CustomException(STORE_RELIC_NOT_FOUND));
+            relicFound.setFound(true);
+        }
         return new PurchaseRelicDto(canBuy, playerMoney, playerRelicDto);
     }
 
