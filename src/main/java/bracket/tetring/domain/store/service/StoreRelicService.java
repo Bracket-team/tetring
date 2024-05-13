@@ -16,7 +16,6 @@ import bracket.tetring.domain.store.dto.PurchaseRelicDto;
 import bracket.tetring.domain.store.dto.RerollRelicsDto;
 import bracket.tetring.domain.store.mapper.StoreRelicMapper;
 import bracket.tetring.domain.store.repository.StoreRelicRepository;
-import bracket.tetring.global.error.ErrorCode;
 import bracket.tetring.global.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 
 import static bracket.tetring.global.error.ErrorCode.*;
-import static bracket.tetring.global.util.RelicNameMapper.*;
 
 @Service
 @RequiredArgsConstructor
