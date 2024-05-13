@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tetris</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      canvas {
+        border: 1px solid #000;
+      }
+      #tetris {
+        margin-right: 20px;
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>Line Score: <span id="lineScore">0</span></div>
+    <div>Combo Score: <span id="comboScore">0</span></div>
+    <div>Final Score: <span id="finalScore">0</span></div>
+    <!-- 캔버스 API 모르겠으면 아래 참조
+        https://developer.mozilla.org/ko/docs/Web/API/Canvas_API/Tutorial/Basic_usage -->
+    <canvas id="hold" width="160" height="160"></canvas>
+    <canvas id="tetris" width="480" height="800"></canvas>
+    <canvas id="next" width="160" height="480"></canvas>
+    <script src="artifacts.js"></script>
+    <script src="draw.js"></script>
+    <script src="gameInit.js"></script>
+    <script src="playerAction.js"></script>
+    <script src="gameLogic.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
