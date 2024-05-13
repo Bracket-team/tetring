@@ -96,7 +96,7 @@ public class StoreRelicService {
         Integer rerollPrice = rerollPriceHelper.getRerollPriceWithRelics(game, store);
         List<StoreRelic> relics = storeRelicRepository.findAllByStoreOrderBySlotNumberAsc(store);
 
-
+        //리롤 여부
         boolean canReroll = false;
 
         if(playerMoney >= rerollPrice) {
