@@ -18,8 +18,10 @@ import org.springframework.context.annotation.Profile;
 
 @SpringBootApplication
 public class TetringApplication {
-	//jdbc:h2:tcp://localhost/~/tetring
-	//jdbc:h2:~/tetring
+	// jdbc:h2:tcp://localhost/~/tetring
+	// jdbc:h2:~/tetring
+	// 테이블 네임 : 언더스크롤 형태 -> data.sql 로 초기 데이터 추가, 테스트 코드 작성, MySql 변환
+	// 유물 기능 점검
 
 	public static void main(String[] args) {
 		SpringApplication.run(TetringApplication.class, args);
