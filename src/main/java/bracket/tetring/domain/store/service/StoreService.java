@@ -1,9 +1,7 @@
 package bracket.tetring.domain.store.service;
 
 import bracket.tetring.domain.game.domain.Game;
-import bracket.tetring.domain.game.repository.RelicRepository;
 import bracket.tetring.domain.game.service.GameServiceHelper;
-import bracket.tetring.domain.player.repository.PlayerRelicRepository;
 import bracket.tetring.domain.store.domain.Store;
 import bracket.tetring.domain.store.domain.StoreBlock;
 import bracket.tetring.domain.store.domain.StoreRelic;
@@ -32,8 +30,6 @@ public class StoreService {
 
     private final StoreBlockRepository storeBlockRepository;
     private final StoreRelicRepository storeRelicRepository;
-    private final RelicRepository relicRepository;
-    private final PlayerRelicRepository playerRelicRepository;
 
     private final StoreDetailsMapper storeDetailsMapper;
     private final LevelUpMoneySystemMapper levelUpMoneySystemMapper;
@@ -56,7 +52,7 @@ public class StoreService {
         //리롤 비용 가져오기
         Integer rerollPrice = rerollPriceHelper.getRerollPriceWithRelics(game, store);
 
-        return storeDetailsMapper.toStoreDetailsDto(game, store, storeBlocks, storeRelics, rerollPrice);
+        return storeDetailsMapper.toStoreDetailsDto(store, storeBlocks, storeRelics, rerollPrice);
     }
 
     @Transactional

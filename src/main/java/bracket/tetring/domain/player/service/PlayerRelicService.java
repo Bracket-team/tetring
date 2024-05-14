@@ -7,7 +7,6 @@ import bracket.tetring.domain.player.dto.PlayerRelicDto;
 import bracket.tetring.domain.player.mapper.PlayerRelicMapper;
 import bracket.tetring.domain.player.repository.PlayerRelicRepository;
 import bracket.tetring.domain.store.domain.Store;
-import bracket.tetring.domain.store.repository.StoreRepository;
 import bracket.tetring.global.error.ErrorCode;
 import bracket.tetring.global.exception.CustomException;
 import bracket.tetring.global.util.RelicNameMapper;
@@ -27,7 +26,6 @@ public class PlayerRelicService {
     private final GameServiceHelper gameServiceHelper;
 
     private final PlayerRelicRepository playerRelicRepository;
-    private final StoreRepository storeRepository;
 
     private final PlayerRelicMapper playerRelicMapper;
 

@@ -21,10 +21,10 @@ public class StoreDetailsMapper {
     private final StoreRelicMapper storeRelicMapper;
     private final StoreMapper storeMapper;
 
-    public StoreDetailsDto toStoreDetailsDto(Game game, Store store, List<StoreBlock> storeBlocks, List<StoreRelic> storeRelics, Integer rerollPrice) {
+    public StoreDetailsDto toStoreDetailsDto(Store store, List<StoreBlock> storeBlocks, List<StoreRelic> storeRelics, Integer rerollPrice) {
         StoreDetailsDto storeDetailsDto = new StoreDetailsDto();
 
-        StoreDto storeDto = storeMapper.toStoreDto(game, store, rerollPrice);
+        StoreDto storeDto = storeMapper.toStoreDto(store, rerollPrice);
         List<StoreBlockDto> storeBlockDtos = storeBlockMapper.storeBlocksToStoreBlockDtos(storeBlocks);
         List<StoreRelicDto> storeRelicDtos = storeRelicMapper.storeRelicsToStoreRelicDtos(storeRelics);
 
