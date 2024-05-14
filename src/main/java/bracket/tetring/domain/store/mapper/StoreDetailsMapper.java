@@ -1,6 +1,5 @@
 package bracket.tetring.domain.store.mapper;
 
-import bracket.tetring.domain.game.domain.Game;
 import bracket.tetring.domain.store.domain.Store;
 import bracket.tetring.domain.store.domain.StoreBlock;
 import bracket.tetring.domain.store.domain.StoreRelic;
