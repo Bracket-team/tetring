@@ -80,7 +80,7 @@ public class GameStartService {
         log.info("새로운 플레이어 시작. 플레이어 아이디={}", playerId);
         Player player = gameServiceHelper.getPlayer(playerId);
         Game newGame = initGame(player);
-        initPlayerBlock(newGame, 3);
+        initPlayerBlock(newGame);
         initStore(newGame);
         return newGame;
     }
@@ -89,7 +89,8 @@ public class GameStartService {
         gameRepository.save(game);
         return game;
     }
-    private void initPlayerBlock(Game game, int blockCount) {
+    private void initPlayerBlock(Game game) {
+        int blockCount = 7;
         List<PlayerBlock> playerBlocks = new ArrayList<>();
 
         // Sky Blocks
