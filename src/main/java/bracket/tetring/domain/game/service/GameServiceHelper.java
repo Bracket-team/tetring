@@ -6,13 +6,11 @@ import bracket.tetring.domain.player.domain.Player;
 import bracket.tetring.domain.player.repository.PlayerRepository;
 import bracket.tetring.domain.store.domain.Store;
 import bracket.tetring.domain.store.repository.StoreRepository;
-import bracket.tetring.global.error.ErrorCode;
 import bracket.tetring.global.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.NoSuchElementException;
 import java.util.UUID;
 
 import static bracket.tetring.global.error.ErrorCode.*;

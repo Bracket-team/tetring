@@ -2,7 +2,6 @@ package bracket.tetring.domain.store.web;
 
 import bracket.tetring.domain.game.dto.SlotNumberDto;
 import bracket.tetring.domain.store.dto.PurchaseBlockDto;
-import bracket.tetring.domain.store.dto.StoreBlockDto;
 import bracket.tetring.domain.store.service.StoreBlockService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

@@ -6,8 +6,6 @@ import bracket.tetring.domain.player.domain.PlayerRelicFound;
 import bracket.tetring.domain.player.dto.PlayerRelicFoundDto;
 import bracket.tetring.domain.player.mapper.PlayerRelicFoundMapper;
 import bracket.tetring.domain.player.repository.PlayerRelicFoundRepository;
-import bracket.tetring.domain.player.repository.PlayerRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service

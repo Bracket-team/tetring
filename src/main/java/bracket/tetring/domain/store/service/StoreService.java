@@ -3,22 +3,24 @@ package bracket.tetring.domain.store.service;
 import bracket.tetring.domain.game.domain.Game;
 import bracket.tetring.domain.game.repository.RelicRepository;
 import bracket.tetring.domain.game.service.GameServiceHelper;
+import bracket.tetring.domain.player.repository.PlayerRelicRepository;
+import bracket.tetring.domain.store.domain.Store;
 import bracket.tetring.domain.store.domain.StoreBlock;
 import bracket.tetring.domain.store.domain.StoreRelic;
-import bracket.tetring.domain.store.dto.*;
+import bracket.tetring.domain.store.dto.LevelUpMoneySystemDto;
+import bracket.tetring.domain.store.dto.StoreDetailsDto;
 import bracket.tetring.domain.store.mapper.LevelUpMoneySystemMapper;
 import bracket.tetring.domain.store.mapper.StoreDetailsMapper;
 import bracket.tetring.domain.store.repository.StoreBlockRepository;
 import bracket.tetring.domain.store.repository.StoreRelicRepository;
-import bracket.tetring.domain.player.repository.PlayerRelicRepository;
-import bracket.tetring.domain.store.domain.Store;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.List;
+import java.util.UUID;
 
-import static bracket.tetring.global.util.CalculateSystem.*;
+import static bracket.tetring.global.util.CalculateSystem.getMoneyLevelUpPrice;
 
 @Service
 @RequiredArgsConstructor

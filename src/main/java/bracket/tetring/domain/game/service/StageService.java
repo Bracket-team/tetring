@@ -4,16 +4,12 @@ import bracket.tetring.domain.game.domain.Game;
 import bracket.tetring.domain.game.dto.EndStageDto;
 import bracket.tetring.domain.game.dto.StartStageDto;
 import bracket.tetring.domain.game.mapper.StageMapper;
-import bracket.tetring.domain.game.repository.GameRepository;
 import bracket.tetring.domain.game.repository.RelicRepository;
 import bracket.tetring.domain.player.domain.PlayerBlock;
 import bracket.tetring.domain.player.domain.PlayerRelic;
-import bracket.tetring.domain.player.dto.PlayerBlockDto;
-import bracket.tetring.domain.player.dto.PlayerRelicDto;
 import bracket.tetring.domain.player.repository.PlayerBlockRepository;
 import bracket.tetring.domain.player.repository.PlayerRelicRepository;
 import bracket.tetring.domain.store.domain.Store;
-import bracket.tetring.domain.store.repository.StoreRepository;
 import bracket.tetring.domain.store.service.StoreService;
 import bracket.tetring.global.error.ErrorCode;
 import bracket.tetring.global.exception.CustomException;
@@ -23,11 +19,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.UUID;
 
-import static bracket.tetring.global.util.CalculateSystem.*;
+import static bracket.tetring.global.util.CalculateSystem.getStageGoal;
+import static bracket.tetring.global.util.CalculateSystem.getTotalMoney;
 
 @Slf4j
 @Service

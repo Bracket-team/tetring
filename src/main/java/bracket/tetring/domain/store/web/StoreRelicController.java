@@ -3,7 +3,6 @@ package bracket.tetring.domain.store.web;
 import bracket.tetring.domain.game.dto.SlotNumberDto;
 import bracket.tetring.domain.store.dto.PurchaseRelicDto;
 import bracket.tetring.domain.store.dto.RerollRelicsDto;
-import bracket.tetring.domain.store.repository.StoreRelicRepository;
 import bracket.tetring.domain.store.service.StoreRelicService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

@@ -4,8 +4,6 @@ import bracket.tetring.domain.game.dto.RelicNumberDto;
 import bracket.tetring.domain.game.dto.SlotNumberDto;
 import bracket.tetring.domain.player.dto.PlayerRelicDto;
 import bracket.tetring.domain.player.service.PlayerRelicService;
-import bracket.tetring.global.error.ErrorCode;
-import bracket.tetring.global.exception.CustomException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
-
-import static bracket.tetring.global.error.ErrorCode.*;
 
 @RestController
 @RequiredArgsConstructor

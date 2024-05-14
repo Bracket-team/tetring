@@ -1,14 +1,11 @@
 package bracket.tetring.domain.player.service;
 
 import bracket.tetring.domain.game.domain.Game;
-import bracket.tetring.domain.game.repository.GameRepository;
-import bracket.tetring.domain.game.repository.RelicRepository;
 import bracket.tetring.domain.game.service.GameServiceHelper;
 import bracket.tetring.domain.player.domain.PlayerRelic;
 import bracket.tetring.domain.player.dto.PlayerRelicDto;
 import bracket.tetring.domain.player.mapper.PlayerRelicMapper;
 import bracket.tetring.domain.player.repository.PlayerRelicRepository;
-import bracket.tetring.domain.player.repository.PlayerRepository;
 import bracket.tetring.domain.store.domain.Store;
 import bracket.tetring.domain.store.repository.StoreRepository;
 import bracket.tetring.global.error.ErrorCode;
@@ -20,10 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service

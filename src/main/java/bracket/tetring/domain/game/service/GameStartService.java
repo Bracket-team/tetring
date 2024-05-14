@@ -10,7 +10,6 @@ import bracket.tetring.domain.player.domain.PlayerBlock;
 import bracket.tetring.domain.player.domain.PlayerRelic;
 import bracket.tetring.domain.player.repository.PlayerBlockRepository;
 import bracket.tetring.domain.player.repository.PlayerRelicRepository;
-import bracket.tetring.domain.player.repository.PlayerRepository;
 import bracket.tetring.domain.store.domain.Store;
 import bracket.tetring.domain.store.domain.StoreBlock;
 import bracket.tetring.domain.store.domain.StoreRelic;
@@ -18,16 +17,18 @@ import bracket.tetring.domain.store.repository.StoreBlockRepository;
 import bracket.tetring.domain.store.repository.StoreRelicRepository;
 import bracket.tetring.domain.store.repository.StoreRepository;
 import bracket.tetring.domain.store.service.RerollPriceHelper;
-import bracket.tetring.global.error.ErrorCode;
 import bracket.tetring.global.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-import static bracket.tetring.global.error.ErrorCode.*;
+import static bracket.tetring.global.error.ErrorCode.STORE_NOT_FOUND;
 
 @Slf4j
 @Service

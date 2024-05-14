@@ -1,7 +1,6 @@
 package bracket.tetring.domain.store.web;
 
 import bracket.tetring.domain.store.dto.LevelUpMoneySystemDto;
-import bracket.tetring.domain.store.dto.RerollRelicsDto;
 import bracket.tetring.domain.store.dto.StoreDetailsDto;
 import bracket.tetring.domain.store.service.StoreService;
 import lombok.RequiredArgsConstructor;

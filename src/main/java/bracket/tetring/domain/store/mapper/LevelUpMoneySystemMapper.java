@@ -2,10 +2,9 @@ package bracket.tetring.domain.store.mapper;
 
 import bracket.tetring.domain.store.domain.Store;
 import bracket.tetring.domain.store.dto.LevelUpMoneySystemDto;
-import bracket.tetring.global.util.CalculateSystem;
 import org.springframework.stereotype.Component;
 
-import static bracket.tetring.global.util.CalculateSystem.*;
+import static bracket.tetring.global.util.CalculateSystem.getMoneyLevelUpPrice;
 
 @Component
 public class LevelUpMoneySystemMapper {

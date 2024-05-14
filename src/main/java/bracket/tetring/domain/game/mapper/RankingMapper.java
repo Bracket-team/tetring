@@ -2,8 +2,6 @@ package bracket.tetring.domain.game.mapper;
 
 import bracket.tetring.domain.game.domain.Score;
 import bracket.tetring.domain.game.dto.RankingDto;
-import bracket.tetring.domain.player.domain.PlayerBlock;
-import bracket.tetring.domain.player.dto.PlayerBlockDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

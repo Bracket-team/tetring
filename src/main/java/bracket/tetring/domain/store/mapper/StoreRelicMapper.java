@@ -1,8 +1,6 @@
 package bracket.tetring.domain.store.mapper;
 
-import bracket.tetring.domain.store.domain.StoreBlock;
 import bracket.tetring.domain.store.domain.StoreRelic;
-import bracket.tetring.domain.store.dto.StoreBlockDto;
 import bracket.tetring.domain.store.dto.StoreRelicDto;
 import org.springframework.stereotype.Component;
 

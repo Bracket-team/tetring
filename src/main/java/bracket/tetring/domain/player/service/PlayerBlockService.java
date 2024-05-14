@@ -1,13 +1,11 @@
 package bracket.tetring.domain.player.service;
 
 import bracket.tetring.domain.game.domain.Game;
-import bracket.tetring.domain.game.repository.GameRepository;
 import bracket.tetring.domain.game.service.GameServiceHelper;
 import bracket.tetring.domain.player.domain.PlayerBlock;
 import bracket.tetring.domain.player.dto.PlayerBlockDto;
 import bracket.tetring.domain.player.mapper.PlayerBlockMapper;
 import bracket.tetring.domain.player.repository.PlayerBlockRepository;
-import bracket.tetring.global.error.ErrorCode;
 import bracket.tetring.global.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,12 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
-import static bracket.tetring.global.error.ErrorCode.*;
+import static bracket.tetring.global.error.ErrorCode.PLAYER_BLOCK_NOT_FOUND;
 
 @Slf4j
 @Service

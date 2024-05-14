@@ -4,28 +4,19 @@ import bracket.tetring.domain.game.domain.Game;
 import bracket.tetring.domain.game.domain.Score;
 import bracket.tetring.domain.game.dto.GameOverDto;
 import bracket.tetring.domain.game.mapper.GameOverMapper;
-import bracket.tetring.domain.game.repository.GameRepository;
 import bracket.tetring.domain.game.repository.ScoreRepository;
 import bracket.tetring.domain.player.domain.Player;
-import bracket.tetring.domain.player.domain.PlayerBlock;
 import bracket.tetring.domain.player.domain.PlayerRelic;
-import bracket.tetring.domain.player.dto.PlayerRelicDto;
 import bracket.tetring.domain.player.repository.PlayerBlockRepository;
 import bracket.tetring.domain.player.repository.PlayerRelicRepository;
-import bracket.tetring.domain.player.repository.PlayerRepository;
 import bracket.tetring.domain.store.domain.Store;
-import bracket.tetring.domain.store.repository.StoreRepository;
-import bracket.tetring.global.error.ErrorCode;
 import bracket.tetring.global.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 import static bracket.tetring.global.error.ErrorCode.*;
 
