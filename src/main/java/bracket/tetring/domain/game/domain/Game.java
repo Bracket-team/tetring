@@ -11,7 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 import java.util.UUID;
 
 @Entity
-@Table(name = "GAMES")
+@Table(name = "games")
 @Getter
 @Setter
 @ToString
@@ -35,7 +35,7 @@ public class Game {
     private Boolean checkFinished;
 
     @ManyToOne
-    @JoinColumn(name = "PLAYER_ID")
+    @JoinColumn(name = "player_id")
     private Player player;
 
     public Game() {

@@ -9,14 +9,14 @@ import lombok.Setter;
 
 @Entity
 @IdClass(PlayerRelicId.class)
-@Table(name = "PLAYER_RELICS")
+@Table(name = "player_relics")
 @Getter
 @Setter
 public class PlayerRelic {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "GAME_ID")
+    @JoinColumn(name = "game_id")
     private Game game;
 
     @Id
@@ -25,7 +25,7 @@ public class PlayerRelic {
     private Integer slotNumber;
 
     @ManyToOne
-    @JoinColumn(name = "RELIC_NUMBER")
+    @JoinColumn(name = "relic_number")
     private Relic relic;
 
     public PlayerRelic() {

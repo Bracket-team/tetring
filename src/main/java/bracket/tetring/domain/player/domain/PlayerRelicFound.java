@@ -7,19 +7,19 @@ import lombok.Setter;
 
 @Entity
 @IdClass(PlayerRelicFoundId.class)
-@Table(name = "PLAYER_RELIC_FOUND")
+@Table(name = "player_relic_found")
 @Getter
 @Setter
 public class PlayerRelicFound {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "PLAYER_ID")
+    @JoinColumn(name = "player_id")
     private Player player;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "RELIC_NUBMER")
+    @JoinColumn(name = "relic_number")
     private Relic relic;
 
     @Column(nullable = false)

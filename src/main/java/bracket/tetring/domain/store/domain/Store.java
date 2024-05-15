@@ -9,7 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 import java.util.UUID;
 
 @Entity
-@Table(name = "STORES")
+@Table(name = "stores")
 @Getter
 @Setter
 public class Store {
@@ -19,7 +19,7 @@ public class Store {
 
     @MapsId
     @OneToOne
-    @JoinColumn(name = "GAME_ID")
+    @JoinColumn(name = "game_id")
     private Game game;
 
     @Column(nullable = false)

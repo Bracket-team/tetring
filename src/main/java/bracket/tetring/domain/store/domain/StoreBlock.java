@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Entity
 @IdClass(StoreBlockId.class)
-@Table(name = "STORE_BLOCKS")
+@Table(name = "store_blocks")
 @Getter
 @Setter
 public class StoreBlock {
@@ -18,7 +18,7 @@ public class StoreBlock {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "STORE_ID")
+    @JoinColumn(name = "store_id")
     private Store store;
 
     @Column(nullable = false, length = 20)

@@ -1,6 +1,5 @@
 package bracket.tetring.domain.game.dto;
 
-import bracket.tetring.domain.player.domain.PlayerBlock;
 import bracket.tetring.domain.player.dto.PlayerBlockDto;
 import bracket.tetring.domain.player.dto.PlayerRelicDto;
 import com.fasterxml.jackson.annotation.JsonProperty;

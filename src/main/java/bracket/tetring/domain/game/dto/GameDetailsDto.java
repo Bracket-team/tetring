@@ -6,8 +6,6 @@ import bracket.tetring.domain.store.dto.StoreBlockDto;
 import bracket.tetring.domain.store.dto.StoreDto;
 import bracket.tetring.domain.store.dto.StoreRelicDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.*;
 
 import java.util.List;
