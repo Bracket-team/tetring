@@ -2,9 +2,9 @@ package bracket.tetring.global.login.service;
 
 
 import bracket.tetring.domain.player.domain.Player;
+import bracket.tetring.domain.player.repository.PlayerRepository;
 import bracket.tetring.global.login.dto.OAuthAttributes;
 import bracket.tetring.global.login.dto.SessionUser;
-import bracket.tetring.global.login.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,7 +22,7 @@ import java.util.Collections;
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
-    private final UserRepository userRepository;
+    private final PlayerRepository playerRepository;
     private final HttpSession httpSession;
 
     @Override
@@ -60,12 +60,12 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     }
 
     private Player saveOrUpdate(OAuthAttributes attributes) {
-        Player user = userRepository.findByEmail(attributes.getEmail())
+        Player user = playerRepository.findByEmail(attributes.getEmail())
                 // 구글 사용자 정보 업데이트(이미 가입된 사용자) => 업데이트
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 // 가입되지 않은 사용자 => Player 엔티티 생성
                 .orElse(attributes.toEntity());
 
-        return userRepository.save(user);
+        return playerRepository.save(user);
     }
 }
