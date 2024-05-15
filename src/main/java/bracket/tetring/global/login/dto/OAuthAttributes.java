@@ -1,6 +1,6 @@
 package bracket.tetring.global.login.dto;
 
-import bracket.tetring.global.login.domain.Role;
+import bracket.tetring.domain.player.domain.Role;
 import bracket.tetring.global.login.domain.User;
 import lombok.Builder;
 import lombok.Getter;

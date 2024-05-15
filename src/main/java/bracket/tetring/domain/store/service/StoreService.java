@@ -34,18 +34,15 @@ public class StoreService {
     private final StoreDetailsMapper storeDetailsMapper;
     private final LevelUpMoneySystemMapper levelUpMoneySystemMapper;
 
+    //상점 정보 가져오는 메소드
     @Transactional
     public StoreDetailsDto getStoreInfo(UUID playerId) {
         Game game = gameServiceHelper.getGame(playerId);
         Store store = gameServiceHelper.getStore(game);
 
-        if (!game.getIsStore()) {
-            game.setIsStore(true);
-            //storeBlock 정보 랜덤으로 저장
-            randomStoreHelper.saveRandomBlock(store);
-            //storeRelic 정보 랜덤으로 저장
-            randomStoreHelper.saveRandomRelic(game, store);
-        }
+        //상점에 처음 들어오는 경우, 블록과 유물을 초기화
+        setStoreBlockAndRelic(game, store);
+
         List<StoreBlock> storeBlocks = storeBlockRepository.findAllByStoreOrderBySlotNumberAsc(store);
         List<StoreRelic> storeRelics = storeRelicRepository.findAllByStoreOrderBySlotNumberAsc(store);
 
@@ -55,6 +52,19 @@ public class StoreService {
         return storeDetailsMapper.toStoreDetailsDto(store, storeBlocks, storeRelics, rerollPrice);
     }
 
+    // 상점 블록하고 유물 랜덤 세팅
+    @Transactional
+    public void setStoreBlockAndRelic(Game game, Store store) {
+        if (!game.getIsStore()) {
+            game.setIsStore(true);
+            //storeBlock 정보 랜덤으로 저장
+            randomStoreHelper.saveRandomBlock(store);
+            //storeRelic 정보 랜덤으로 저장
+            randomStoreHelper.saveRandomRelic(game, store);
+        }
+    }
+
+    //사용자 돈 확인
     @Transactional
     public Integer getPlayerMoney(UUID playerId) {
         Game game = gameServiceHelper.getGame(playerId);
@@ -63,6 +73,7 @@ public class StoreService {
         return store.getMoney();
     }
 
+    //머니 시스템 레벨 업
     @Transactional
     public LevelUpMoneySystemDto levelUpMoneySystem(UUID playerId) {
         Game game = gameServiceHelper.getGame(playerId);

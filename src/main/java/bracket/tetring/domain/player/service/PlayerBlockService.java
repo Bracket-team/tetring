@@ -36,7 +36,7 @@ public class PlayerBlockService {
         return playerBlockMapper.playerBlocksToPlayerBlockDtos(playerBlocks);
     }
 
-    //블록 크기 추가 혹은 줄일 때 사용하는 메소드
+    //블록 크기 변형할 때 사용하는 메소드
     @Transactional
     public void changeBlock(UUID playerId, PlayerBlockDto playerBlockDto) {
         Game game = gameServiceHelper.getGame(playerId);

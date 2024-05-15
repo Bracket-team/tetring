@@ -17,6 +17,7 @@ public class RankingService {
     private final ScoreRepository scoreRepository;
     private final RankingMapper rankingMapper;
 
+    //랭킹 정보 확인
     @Transactional
     public List<RankingDto> getRankings() {
         List<Score> rankings = scoreRepository.findAllRankings();

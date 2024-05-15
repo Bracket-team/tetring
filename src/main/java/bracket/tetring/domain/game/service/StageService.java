@@ -36,6 +36,11 @@ public class StageService {
     private final StoreService storeService;
     private final StageMapper stageMapper;
 
+    //플레이어가 스테이지 시작 시 불러오는 함수
+    /*
+    사용자 블록, 유물 정보 전송
+    리롤 횟수 초기화 및 상점 아닌 것 표시
+     */
     @Transactional
     public StartStageDto playerStartStage(UUID playerId) {
         log.info("플레이어 스테이지 시작. 플레이어 아이디={}", playerId);
@@ -56,6 +61,11 @@ public class StageService {
         return stageMapper.toStartStageDto(game, store, playerBlocks, playerRelics); //스테이지 정보 담아서 반환
     }
 
+    //스테이지 종료 시 불러오는 함수
+    /*
+    승리 여부 판단 후에
+    스테이지 설정, 돈 설정, 미리 상점 초기화를 진행
+     */
     @Transactional
     public EndStageDto playerEndStage(UUID playerId, Long playerScore) {
         log.info("플레이어 스테이지 종료. 플레이어 아이디={}", playerId);
@@ -75,15 +85,18 @@ public class StageService {
         boolean win = false;
         if (playerScore >= getStageGoal(game.getStageNumber())) {
             win = true;
+
             //이겼을 시 다음 스테이지로 설정
             stageNumber += 1;
             game.setStageNumber(stageNumber);
+
             //이겼을 시 돈 획득
             boolean existsInvestRelic = relicRepository.existsById(20);
             money = getTotalMoney(store.getMoneyLevel(), money, existsInvestRelic);
             store.setMoney(money);
+
             // 스테이지 끝나면 상점 갈 것이기에 상점 미리 불러서 상점 정보 초기화
-            storeService.getStoreInfo(playerId);
+            storeService.setStoreBlockAndRelic(game, store);
         } else {
             //졌을 때 게임 끝난 걸로 처리
             game.setCheckFinished(true);

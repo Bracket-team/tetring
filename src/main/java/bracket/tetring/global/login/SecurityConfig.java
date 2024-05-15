@@ -1,7 +1,7 @@
 package bracket.tetring.global.login;
 
 
-import bracket.tetring.global.login.domain.Role;
+import bracket.tetring.domain.player.domain.Role;
 import bracket.tetring.global.login.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

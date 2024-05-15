@@ -47,12 +47,17 @@ public class GameStartService {
     private final RerollPriceHelper rerollPriceHelper;
     private final GameServiceHelper gameServiceHelper;
 
+    //사용자 게임 중인지 확인
     @Transactional
     public Boolean isPlayerGaming(UUID playerId) {
         Optional<Game> game = gameRepository.findPlayingGameByPlayerId(playerId);
         return game.isPresent();
     }
-
+    /*
+    사용자가 게임 시작할 시 게임 관련 정보
+    처음 게임 -> 관련 정보들을 초기화하여 제공
+    이어하기 -> 이전에 게임하던 정보를 그대로 제공
+    */
     @Transactional
     public GameDetailsDto getGameDetailsForPlayers(UUID playerId) {
         Game game = gameRepository.findPlayingGameByPlayerId(playerId)
