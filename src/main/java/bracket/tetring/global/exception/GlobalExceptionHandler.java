@@ -53,6 +53,7 @@ public class GlobalExceptionHandler {
         exceptionResponse.setMessage(INTERNAL_SERVER_ERROR.getMessage());
         exceptionResponse.setPath(((ServletWebRequest)request).getRequest().getRequestURI());
         log.info("서버 오류 메세지={}", ex.getMessage());
+        log.info("에러 종류={}", ex.getClass().getName());
 
         return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }

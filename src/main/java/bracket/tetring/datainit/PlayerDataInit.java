@@ -1,6 +1,7 @@
 package bracket.tetring.datainit;
 
 import bracket.tetring.domain.player.domain.Player;
+import bracket.tetring.domain.player.domain.Role;
 import bracket.tetring.domain.player.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -15,7 +16,7 @@ public class PlayerDataInit {
     @Transactional
     @EventListener(ApplicationReadyEvent.class)
     public void initData() {
-        Player testPlayer = new Player("송하준", "427shg@gmail.com");
+        Player testPlayer = new Player("송하준", "427shg@gmail.com", "", Role.USER);
         playerRepository.save(testPlayer);
     }
 }
