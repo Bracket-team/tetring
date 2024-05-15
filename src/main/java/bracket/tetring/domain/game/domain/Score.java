@@ -8,19 +8,19 @@ import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @IdClass(ScoreId.class)
-@Table(name = "SCORES")
+@Table(name = "scores")
 @Getter
 @Setter
 public class Score {
 
     @Id
     @OneToOne
-    @JoinColumn(name = "GAME_ID")
+    @JoinColumn(name = "game_id")
     private Game game;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "PLAYER_ID")
+    @JoinColumn(name = "player_id")
     private Player player;
 
     @Column(nullable = false)

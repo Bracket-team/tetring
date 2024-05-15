@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Entity
 @IdClass(StoreRelicId.class)
-@Table(name = "STORE_RELICS")
+@Table(name = "store_relics")
 @Getter
 @Setter
 public class StoreRelic {
@@ -17,13 +17,12 @@ public class StoreRelic {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "STORE_ID")
+    @JoinColumn(name = "store_id")
     private Store store;
 
     @ManyToOne
-    @JoinColumn(name = "RELIC_NUMBER")
+    @JoinColumn(name = "relic_number")
     private Relic relic;
-
 
     public StoreRelic() {
     }

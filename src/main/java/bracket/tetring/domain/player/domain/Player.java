@@ -1,5 +1,6 @@
 package bracket.tetring.domain.player.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 import java.util.UUID;
 
 @Entity
-@Table(name = "PLAYERS")
+@Table(name = "players")
 @Getter
 @Setter
 public class Player {
@@ -17,6 +18,7 @@ public class Player {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name="uuid2", strategy = "uuid2")
     @Column(columnDefinition = "BINARY(16)")
+    @JsonProperty("player_id")
     private UUID playerId;
 
     @Column(nullable = false)
