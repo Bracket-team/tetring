@@ -6,9 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.GenericGenerator;
-
-import java.util.UUID;
 
 @Entity
 @Table(name = "games")
