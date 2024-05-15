@@ -1,7 +1,7 @@
 package bracket.tetring.global.login.dto;
 
+import bracket.tetring.domain.player.domain.Player;
 import bracket.tetring.domain.player.domain.Role;
-import bracket.tetring.global.login.domain.User;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -53,8 +53,8 @@ public class OAuthAttributes {
                 .build();
     }
     // User 엔티티 생성
-    public User toEntity() {
-        return User.builder()
+    public Player toEntity() {
+        return Player.builder()
                 .name(name)
                 .email(email)
                 .picture(picture)
