@@ -1,7 +1,7 @@
 package bracket.tetring.global.login.service;
 
 
-import bracket.tetring.global.login.domain.User;
+import bracket.tetring.domain.player.domain.Player;
 import bracket.tetring.global.login.dto.OAuthAttributes;
 import bracket.tetring.global.login.dto.SessionUser;
 import bracket.tetring.global.login.repository.UserRepository;
@@ -47,24 +47,23 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         // 사용자 저장 또는 업데이트
-        User user = saveOrUpdate(attributes);
+        Player player = saveOrUpdate(attributes);
 
         // 세션에 사용자 정보 저장
-        httpSession.setAttribute("user", new SessionUser(user));
+        httpSession.setAttribute("player", new SessionUser(player));
 
         return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority(
-                        user.getRoleKey())),
+                Collections.singleton(new SimpleGrantedAuthority(player.getRoleKey())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey()
         );
     }
 
-    private User saveOrUpdate(OAuthAttributes attributes) {
-        User user = userRepository.findByEmail(attributes.getEmail())
+    private Player saveOrUpdate(OAuthAttributes attributes) {
+        Player user = userRepository.findByEmail(attributes.getEmail())
                 // 구글 사용자 정보 업데이트(이미 가입된 사용자) => 업데이트
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
-                // 가입되지 않은 사용자 => User 엔티티 생성
+                // 가입되지 않은 사용자 => Player 엔티티 생성
                 .orElse(attributes.toEntity());
 
         return userRepository.save(user);

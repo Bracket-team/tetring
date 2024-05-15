@@ -1,6 +1,6 @@
 package bracket.tetring.global.login.dto;
 
-import bracket.tetring.global.login.domain.User;
+import bracket.tetring.domain.player.domain.Player;
 import lombok.Getter;
 
 import java.io.Serializable;
@@ -12,9 +12,9 @@ public class SessionUser implements Serializable {
     private String email;
     private String picture;
 
-    public SessionUser(User user) {
-        this.name = user.getName();
-        this.email = user.getEmail();
-        this.picture = user.getPicture();
+    public SessionUser(Player player) {
+        this.name = player.getName();
+        this.email = player.getEmail();
+        this.picture = player.getPicture();
     }
 }
