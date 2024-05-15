@@ -42,12 +42,12 @@ public class SecurityConfig {
                 .logout( // 로그아웃 성공 시 / 주소로 이동
                         (logoutConfig) -> logoutConfig.logoutSuccessUrl("/")
                 )
-                .formLogin((formlogin)->formlogin
-                        .loginPage("/login.html") // 로그인 페이지로 사용할 html
-                        .loginProcessingUrl("/login") // 로그인 처리 URL 지정
-                        .defaultSuccessUrl("/") // 로그인 성공시 리다이렉션할 URL
-                        .failureUrl("/login.html?error=true") // 로그인 실패시 리다이렉션할 URL
-                        .permitAll()) // 단순 허용
+//                .formLogin((formlogin)->formlogin
+//                        .loginPage("/login.html") // 로그인 페이지로 사용할 html
+//                        .loginProcessingUrl("/login") // 로그인 처리 URL 지정
+//                        .defaultSuccessUrl("/") // 로그인 성공시 리다이렉션할 URL
+//                        .failureUrl("/login.html?error=true") // 로그인 실패시 리다이렉션할 URL
+//                        .permitAll()) // 단순 허용
 
                 // OAuth2 로그인 기능에 대한 여러 설정
                 .oauth2Login(Customizer.withDefaults()); // 아래 코드와 동일한 결과
