@@ -2,6 +2,7 @@ package bracket.tetring.domain.player.domain;
 
 import bracket.tetring.domain.game.domain.Game;
 import bracket.tetring.domain.game.domain.Relic;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class PlayerRelic {
 
     @Id
     @Column(nullable = false)
+    @JsonProperty("slot_number")
     private Integer slotNumber;
 
     @ManyToOne
