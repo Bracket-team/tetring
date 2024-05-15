@@ -1,8 +1,8 @@
 package bracket.tetring.global.login.domain;
 
+import bracket.tetring.domain.player.domain.Role;
 import jakarta.persistence.*;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
 
 
 @Getter // Getter 생성

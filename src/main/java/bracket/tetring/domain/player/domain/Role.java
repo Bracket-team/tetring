@@ -1,4 +1,4 @@
-package bracket.tetring.global.login.domain;
+package bracket.tetring.domain.player.domain;
 
 
 import lombok.Getter;
