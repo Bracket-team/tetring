@@ -28,12 +28,16 @@ public class PlayerRelic {
     @JoinColumn(name = "relic_number")
     private Relic relic;
 
+    @Column
+    private Float rate;
+
     public PlayerRelic() {
     }
 
-    public PlayerRelic(Game game, Relic relic, Integer slotNumber) {
+    public PlayerRelic(Game game, Relic relic, Integer slotNumber, Float rate) {
         this.game = game;
         this.relic = relic;
         this.slotNumber = slotNumber;
+        this.rate = rate;
     }
 }

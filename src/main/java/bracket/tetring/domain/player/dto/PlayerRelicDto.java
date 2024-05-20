@@ -23,7 +23,7 @@ public class PlayerRelicDto {
 
     private Integer price;
 
-    private Integer coef;
+    private Float rate;
 
     @JsonProperty("slot_number")
     private Integer slotNumber;
