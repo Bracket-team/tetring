@@ -17,8 +17,8 @@ public class StoreRelicMapper {
         storeRelicDto.setRarity(storeRelic.getRelic().getRarity().toString());
         storeRelicDto.setPrice(storeRelic.getRelic().getPrice());
         storeRelicDto.setEffect(storeRelic.getRelic().getEffect());
-        storeRelicDto.setCoef(storeRelic.getRelic().getCoef());
         storeRelicDto.setSlotNumber(storeRelic.getSlotNumber());
+        storeRelicDto.setRate(storeRelic.getRelic().getRate());
 
         return storeRelicDto;
     }

@@ -28,14 +28,18 @@ public class Relic {
     @Column(nullable = false)
     private Integer price; //가격
 
+    @Column
+    private Float rate;
+
     public Relic() {
     }
 
-    public Relic(Integer relicNumber, String relicName, Rarity rarity, Integer price, String effect) {
+    public Relic(Integer relicNumber, String relicName, Rarity rarity, Integer price, String effect, Float rate) {
         this.relicNumber = relicNumber;
         this.relicName = relicName;
         this.rarity = rarity;
         this.price = price;
         this.effect = effect;
+        this.rate = rate;
     }
 }

@@ -71,7 +71,7 @@ public class StoreRelicService {
             store.setMoney(playerMoney);
 
             //플레이어 유물에 추가
-            PlayerRelic playerRelic = new PlayerRelic(game, relic, smallestEmptySlotNumber.orElseThrow());
+            PlayerRelic playerRelic = new PlayerRelic(game, relic, smallestEmptySlotNumber.orElseThrow(), relic.getRate());
             playerRelic = playerRelicRepository.save(playerRelic);
 
             playerRelicDto = playerRelicMapper.playerRelicToPlayerRelicDto(playerRelic);

@@ -1,6 +1,5 @@
 package bracket.tetring.domain.player.dto;
 
-import bracket.tetring.domain.game.domain.Rarity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 

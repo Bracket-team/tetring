@@ -36,6 +36,6 @@ public class PlayerRelicDataInit {
         Relic firstRelic = relicRepository.findById(1).orElseThrow(
                 () -> new NoSuchElementException("1번 유물이 존재하지 않습니다.")
         );
-        playerRelicRepository.save(new PlayerRelic(testGame, firstRelic, 1));
+        playerRelicRepository.save(new PlayerRelic(testGame, firstRelic, 1, null));
     }
 }
