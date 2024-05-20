@@ -2,18 +2,12 @@ package bracket.tetring.domain.game.service;
 
 import bracket.tetring.domain.game.domain.Game;
 import bracket.tetring.domain.game.dto.GameOverDto;
-import bracket.tetring.domain.game.mapper.GameOverMapper;
 import bracket.tetring.domain.game.repository.GameRepository;
-import bracket.tetring.domain.game.repository.ScoreRepository;
 import bracket.tetring.domain.player.domain.Player;
 import bracket.tetring.domain.player.domain.Role;
-import bracket.tetring.domain.player.repository.PlayerBlockRepository;
-import bracket.tetring.domain.player.repository.PlayerRelicRepository;
 import bracket.tetring.domain.player.repository.PlayerRepository;
 import bracket.tetring.domain.store.domain.Store;
 import bracket.tetring.domain.store.repository.StoreRepository;
-import bracket.tetring.global.exception.CustomException;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,10 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
