@@ -4,6 +4,7 @@ import bracket.tetring.domain.game.domain.Rarity;
 import bracket.tetring.domain.game.domain.Relic;
 import bracket.tetring.domain.player.domain.Player;
 import bracket.tetring.domain.player.domain.PlayerRelicFound;
+import bracket.tetring.domain.player.domain.Role;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ class PlayerRelicFoundRepositoryTest {
     @DisplayName("특정 플레이어의 유물 발견 목록을 조회한다.")
     public void findByPlayer() {
         // given
-        Player player = new Player("TestPlayer", "test@player.com");
+        Player player = new Player("TestPlayer", "test@player.com", null, Role.USER);
         entityManager.persist(player);
 
         Relic relic1 = new Relic(1, "RelicOne", Rarity.NORMAL, 10, "EffectOne", null);

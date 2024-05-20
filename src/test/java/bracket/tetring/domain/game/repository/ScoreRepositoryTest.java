@@ -3,6 +3,7 @@ package bracket.tetring.domain.game.repository;
 import bracket.tetring.domain.game.domain.Game;
 import bracket.tetring.domain.game.domain.Score;
 import bracket.tetring.domain.player.domain.Player;
+import bracket.tetring.domain.player.domain.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,10 +34,10 @@ class ScoreRepositoryTest {
 
     @BeforeEach
     public void setData() {
-        player = new Player("Test Player", "test@example.com");
+        player = new Player("Test Player", "test@example.com", null, Role.USER);
         entityManager.persist(player);
 
-        player2 = new Player("player2", "428@gamil.com");
+        player2 = new Player("player2", "428@gamil.com", null, Role.USER);
         entityManager.persist(player2);
 
         game = new Game(1, 100L, false, true, player);

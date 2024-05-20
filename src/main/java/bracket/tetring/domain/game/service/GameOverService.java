@@ -31,15 +31,13 @@ public class GameOverService {
     private final GameOverMapper gameOverMapper;
 
     //게임 종료 시 결과 정보 전달
+    //해당 기능을 사용할 시 게임 종료 처리
     @Transactional
     public GameOverDto getGameResult(UUID playerId) {
         Game game = gameServiceHelper.getGame(playerId);
         Store store = gameServiceHelper.getStore(game);
 
-        //게임이 오버되지 않았을 경우 결과 대신 에러를 리턴
-        if(!(game.getCheckFinished())) {
-            throw new CustomException(NOT_GAME_OVER);
-        }
+        game.setCheckFinished(true);
 
         saveScore(playerId, game); //게임 종료시 점수 저장
 
@@ -55,19 +53,12 @@ public class GameOverService {
     //플레이어가 게임 그만두기 할 시
     @Transactional
     public GameOverDto quitGame(UUID playerId) {
-        Game game = gameServiceHelper.getGame(playerId);
-
-        if(game.getCheckFinished()) {
-            throw new CustomException(GAME_OVER);
-        }
-
-        game.setCheckFinished(true);
         return getGameResult(playerId);
     }
 
     private void saveScore(UUID playerId, Game game) {
         Player player = gameServiceHelper.getPlayer(playerId);
-        if(!(scoreRepository.existsScoreByGameAndPlayer(game, player))) {
+        if(scoreRepository.existsScoreByGameAndPlayer(game, player)) {
             throw new CustomException(SCORE_ALREADY_SAVED);
         }
 

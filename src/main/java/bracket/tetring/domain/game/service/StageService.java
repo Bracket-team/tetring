@@ -97,9 +97,6 @@ public class StageService {
 
             // 스테이지 끝나면 상점 갈 것이기에 상점 미리 불러서 상점 정보 초기화
             storeService.setStoreBlockAndRelic(game, store);
-        } else {
-            //졌을 때 게임 끝난 걸로 처리
-            game.setCheckFinished(true);
         }
         return stageMapper.toEndStageDto(win, stageNumber, money);
     }
