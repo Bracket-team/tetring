@@ -29,17 +29,17 @@ public class Relic {
     private Integer price; //가격
 
     @Column
-    private Integer coef; //계수
+    private Float rate;
 
     public Relic() {
     }
 
-    public Relic(Integer relicNumber, String relicName, Rarity rarity, Integer price, String effect, Integer coef) {
+    public Relic(Integer relicNumber, String relicName, Rarity rarity, Integer price, String effect, Float rate) {
         this.relicNumber = relicNumber;
         this.relicName = relicName;
         this.rarity = rarity;
         this.price = price;
         this.effect = effect;
-        this.coef = coef;
+        this.rate = rate;
     }
 }

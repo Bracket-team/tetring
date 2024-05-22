@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
-import static bracket.tetring.global.error.ErrorCode.STORE_BLOCK_NOT_FOUND;
+import static bracket.tetring.global.error.ErrorCode.*;
 import static bracket.tetring.global.util.CalculateSystem.getBlockMoney;
 
 @Service
@@ -36,6 +36,9 @@ public class StoreBlockService {
     public PurchaseBlockDto purchaseBlock(UUID playerId, Integer slotNumber) {
         Game game = gameServiceHelper.getGame(playerId);
         Store store = gameServiceHelper.getStore(game);
+        if(!game.getIsStore()) {
+            throw new CustomException(CANT_BUY_BLOCK);
+        }
         StoreBlock storeBlock = storeBlockRepository.findByStoreAndSlotNumber(store, slotNumber).orElseThrow(
                 () -> new CustomException(STORE_BLOCK_NOT_FOUND)
         ); //슬롯 넘버는 컨트롤러 쪽에서 유효성 체크

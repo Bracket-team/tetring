@@ -29,7 +29,7 @@ public class HomeController {
 
     @GetMapping("/{player-id}/relics")
     public ResponseEntity<List<PlayerRelicFoundDto>> getRelicFound(@PathVariable("player-id") UUID playerId) {
-        List<PlayerRelicFoundDto> relics = playerRelicFoundService.findRelicsInfoByPlayerId(playerId);
+        List<PlayerRelicFoundDto> relics = playerRelicFoundService.getRelicFound(playerId);
         return ResponseEntity.ok(relics);
     }
 

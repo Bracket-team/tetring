@@ -1,12 +1,7 @@
 package bracket.tetring.datainit;
 
-import bracket.tetring.domain.game.domain.Game;
-import bracket.tetring.domain.game.domain.Rarity;
 import bracket.tetring.domain.game.domain.Relic;
-import bracket.tetring.domain.game.domain.Score;
-import bracket.tetring.domain.game.repository.GameRepository;
 import bracket.tetring.domain.game.repository.RelicRepository;
-import bracket.tetring.domain.game.repository.ScoreRepository;
 import bracket.tetring.domain.player.domain.Player;
 import bracket.tetring.domain.player.domain.PlayerRelicFound;
 import bracket.tetring.domain.player.repository.PlayerRelicFoundRepository;
@@ -17,7 +12,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 public class PlayerRelicFoundDataInit {
@@ -38,7 +32,7 @@ public class PlayerRelicFoundDataInit {
         Relic secondRelic = relicRepository.findById(2).orElseThrow(
                 () -> new NoSuchElementException("2번 유물이 존재하지 않습니다.")
         );
-        playerRelicFoundRepository.save(new PlayerRelicFound(testPlayer, firstRelic, true));
-        playerRelicFoundRepository.save(new PlayerRelicFound(testPlayer, secondRelic, false));
+        playerRelicFoundRepository.save(new PlayerRelicFound(testPlayer, firstRelic));
+        playerRelicFoundRepository.save(new PlayerRelicFound(testPlayer, secondRelic));
     }
 }

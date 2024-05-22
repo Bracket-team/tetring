@@ -15,7 +15,7 @@ public class PlayerRelicMapper {
         playerRelicDto.setRelicName(playerRelic.getRelic().getRelicName());
         playerRelicDto.setRelicNumber(playerRelic.getRelic().getRelicNumber());
         playerRelicDto.setPrice(playerRelic.getRelic().getPrice());
-        playerRelicDto.setCoef(playerRelic.getRelic().getCoef());
+        playerRelicDto.setRate(playerRelic.getRate());
         playerRelicDto.setRarity(playerRelic.getRelic().getRarity().toString());
         playerRelicDto.setEffect(playerRelic.getRelic().getEffect());
         playerRelicDto.setSlotNumber(playerRelic.getSlotNumber());

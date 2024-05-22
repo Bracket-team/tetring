@@ -28,7 +28,7 @@ public class PlayerRelicFoundService {
     //플레이어가 찾는 유물들 조회
     //플레이어마다 유물 목록 조회할 때 쓰임
     @Transactional
-    public List<PlayerRelicFoundDto> findRelicsInfoByPlayerId(UUID playerId) {
+    public List<PlayerRelicFoundDto> getRelicFound(UUID playerId) {
         Player player = gameServiceHelper.getPlayer(playerId);
 
         // 조회된 Player 엔티티를 사용하여 PlayerRelicFound 엔티티를 조회

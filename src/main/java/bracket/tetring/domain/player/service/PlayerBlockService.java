@@ -36,7 +36,7 @@ public class PlayerBlockService {
         return playerBlockMapper.playerBlocksToPlayerBlockDtos(playerBlocks);
     }
 
-    //블록 크기 변형할 때 사용하는 메소드
+    //블록 모양 변형할 때 사용하는 메소드
     @Transactional
     public void changeBlock(UUID playerId, PlayerBlockDto playerBlockDto) {
         Game game = gameServiceHelper.getGame(playerId);
@@ -47,5 +47,6 @@ public class PlayerBlockService {
         );
 
         playerBlock.setBlockShape(playerBlockDto.getBlockShape());
+        playerBlock.setBlockColor(playerBlockDto.getBlockColor());
     }
 }

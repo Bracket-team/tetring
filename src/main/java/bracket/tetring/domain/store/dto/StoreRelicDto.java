@@ -1,6 +1,5 @@
 package bracket.tetring.domain.store.dto;
 
-import bracket.tetring.domain.game.domain.Rarity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -23,7 +22,7 @@ public class StoreRelicDto {
 
     private Integer price;
 
-    private Integer coef;
+    private Float rate;
 
     @JsonProperty("slot_number")
     private Integer slotNumber;

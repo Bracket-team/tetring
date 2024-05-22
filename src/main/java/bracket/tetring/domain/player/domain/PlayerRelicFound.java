@@ -22,15 +22,11 @@ public class PlayerRelicFound {
     @JoinColumn(name = "relic_number")
     private Relic relic;
 
-    @Column(nullable = false)
-    private boolean found;
-
     public PlayerRelicFound() {
     }
 
-    public PlayerRelicFound(Player player, Relic relic, boolean found) {
+    public PlayerRelicFound(Player player, Relic relic) {
         this.player = player;
         this.relic = relic;
-        this.found = found;
     }
 }

@@ -4,7 +4,6 @@ import bracket.tetring.domain.game.domain.Game;
 import bracket.tetring.domain.game.dto.EndStageDto;
 import bracket.tetring.domain.game.dto.StartStageDto;
 import bracket.tetring.domain.game.mapper.StageMapper;
-import bracket.tetring.domain.game.repository.RelicRepository;
 import bracket.tetring.domain.player.domain.PlayerBlock;
 import bracket.tetring.domain.player.domain.PlayerRelic;
 import bracket.tetring.domain.player.repository.PlayerBlockRepository;
@@ -32,7 +31,6 @@ public class StageService {
     private final GameServiceHelper gameServiceHelper;
     private final PlayerBlockRepository playerBlockRepository;
     private final PlayerRelicRepository playerRelicRepository;
-    private final RelicRepository relicRepository;
     private final StoreService storeService;
     private final StageMapper stageMapper;
 
@@ -91,15 +89,12 @@ public class StageService {
             game.setStageNumber(stageNumber);
 
             //이겼을 시 돈 획득
-            boolean existsInvestRelic = relicRepository.existsById(20);
+            boolean existsInvestRelic = playerRelicRepository.existsByGameAndRelicNumber(game, 20);
             money = getTotalMoney(store.getMoneyLevel(), money, existsInvestRelic);
             store.setMoney(money);
 
             // 스테이지 끝나면 상점 갈 것이기에 상점 미리 불러서 상점 정보 초기화
-            storeService.setStoreBlockAndRelic(game, store);
-        } else {
-            //졌을 때 게임 끝난 걸로 처리
-            game.setCheckFinished(true);
+//            storeService.setStoreBlockAndRelic(game, store);
         }
         return stageMapper.toEndStageDto(win, stageNumber, money);
     }
