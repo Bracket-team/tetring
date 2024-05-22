@@ -8,9 +8,7 @@ import bracket.tetring.domain.player.domain.PlayerRelicFound;
 import bracket.tetring.domain.player.domain.Role;
 import bracket.tetring.domain.player.dto.PlayerRelicFoundDto;
 import bracket.tetring.domain.player.repository.PlayerRelicFoundRepository;
-import bracket.tetring.domain.player.repository.PlayerRelicRepository;
 import bracket.tetring.domain.player.repository.PlayerRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional

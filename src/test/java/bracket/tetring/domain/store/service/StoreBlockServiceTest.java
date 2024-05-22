@@ -14,7 +14,6 @@ import bracket.tetring.domain.store.dto.PurchaseBlockDto;
 import bracket.tetring.domain.store.repository.StoreBlockRepository;
 import bracket.tetring.domain.store.repository.StoreRepository;
 import bracket.tetring.global.exception.CustomException;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,8 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @SpringBootTest
 @Transactional

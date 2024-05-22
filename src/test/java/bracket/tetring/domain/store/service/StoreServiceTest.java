@@ -14,7 +14,6 @@ import bracket.tetring.domain.store.dto.LevelUpMoneySystemDto;
 import bracket.tetring.domain.store.dto.StoreDetailsDto;
 import bracket.tetring.domain.store.repository.StoreRelicRepository;
 import bracket.tetring.domain.store.repository.StoreRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,8 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional

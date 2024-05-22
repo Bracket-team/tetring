@@ -7,7 +7,6 @@ import bracket.tetring.domain.game.repository.GameRepository;
 import bracket.tetring.domain.game.repository.RelicRepository;
 import bracket.tetring.domain.player.domain.Player;
 import bracket.tetring.domain.player.domain.PlayerRelic;
-import bracket.tetring.domain.player.domain.PlayerRelicFound;
 import bracket.tetring.domain.player.domain.Role;
 import bracket.tetring.domain.player.dto.PlayerRelicDto;
 import bracket.tetring.domain.player.repository.PlayerRelicRepository;
@@ -24,8 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 @SpringBootTest

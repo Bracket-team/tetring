@@ -16,9 +16,7 @@ import bracket.tetring.domain.store.dto.PurchaseRelicDto;
 import bracket.tetring.domain.store.dto.RerollRelicsDto;
 import bracket.tetring.domain.store.repository.StoreRelicRepository;
 import bracket.tetring.domain.store.repository.StoreRepository;
-import bracket.tetring.global.util.CalculateSystem;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,8 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 @SpringBootTest
