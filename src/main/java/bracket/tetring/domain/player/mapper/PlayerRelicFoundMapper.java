@@ -18,7 +18,6 @@ public class PlayerRelicFoundMapper {
         playerRelicFoundDto.setRarity(playerRelicFound.getRelic().getRarity().toString());
         playerRelicFoundDto.setEffect(playerRelicFound.getRelic().getEffect());
         playerRelicFoundDto.setPrice(playerRelicFound.getRelic().getPrice());
-        playerRelicFoundDto.setFound(playerRelicFound.isFound());
 
         return playerRelicFoundDto;
     }

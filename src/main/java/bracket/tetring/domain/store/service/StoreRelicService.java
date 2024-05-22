@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static bracket.tetring.global.error.ErrorCode.STORE_RELIC_NOT_FOUND;
+import static bracket.tetring.global.error.ErrorCode.*;
 
 @Service
 @RequiredArgsConstructor
@@ -49,6 +49,10 @@ public class StoreRelicService {
         Player player = gameServiceHelper.getPlayer(playerId);
         Game game = gameServiceHelper.getGame(playerId);
         Store store = gameServiceHelper.getStore(game);
+        //상점 확인
+        if (!(game.getIsStore())) {
+            throw new CustomException(CANT_BUY_RELIC);
+        }
         //구입할 유물
         StoreRelic storeRelic = storeRelicRepository.findByStoreAndSlotNumber(store, slotNumber).orElseThrow(
                 () -> new CustomException(STORE_RELIC_NOT_FOUND)
@@ -80,9 +84,9 @@ public class StoreRelicService {
             storeRelicRepository.delete(storeRelic);
 
             //유저 유물 잠금 해제
-            PlayerRelicFound relicFound = playerRelicFoundRepository.findByPlayerAndRelic(player, relic)
-                    .orElseThrow( () -> new CustomException(STORE_RELIC_NOT_FOUND));
-            relicFound.setFound(true);
+            if(playerRelicFoundRepository.findByPlayerAndRelic(player, relic).isEmpty()) {
+                playerRelicFoundRepository.save(new PlayerRelicFound(player, relic));
+            }
         }
         return new PurchaseRelicDto(canBuy, playerMoney, playerRelicDto);
     }
@@ -111,8 +115,8 @@ public class StoreRelicService {
             //유물 목록들
             relics = storeRelicRepository.findAllByStoreOrderBySlotNumberAsc(store);
             //리롤 횟수 증가
-            rerollPrice = rerollPriceHelper.getRerollPriceWithRelics(game, store);
             store.setRelicRerollTime(store.getRelicRerollTime() + 1);
+            rerollPrice = rerollPriceHelper.getRerollPriceWithRelics(game, store);
         }
         return new RerollRelicsDto(canReroll, rerollPrice, playerMoney, storeRelicMapper.storeRelicsToStoreRelicDtos(relics));
     }

@@ -38,7 +38,7 @@ public class PlayerRelicFoundDataInit {
         Relic secondRelic = relicRepository.findById(2).orElseThrow(
                 () -> new NoSuchElementException("2번 유물이 존재하지 않습니다.")
         );
-        playerRelicFoundRepository.save(new PlayerRelicFound(testPlayer, firstRelic, true));
-        playerRelicFoundRepository.save(new PlayerRelicFound(testPlayer, secondRelic, false));
+        playerRelicFoundRepository.save(new PlayerRelicFound(testPlayer, firstRelic));
+        playerRelicFoundRepository.save(new PlayerRelicFound(testPlayer, secondRelic));
     }
 }

@@ -20,6 +20,4 @@ public class PlayerRelicFoundDto {
     private String effect;
 
     private Integer price;
-
-    private boolean found;
 }
