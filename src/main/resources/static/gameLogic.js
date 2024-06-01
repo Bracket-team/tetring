@@ -37,6 +37,7 @@ function collide(area, player) {
 
 //줄 제거
 function sweep() {
+    previousLineScore = player.lineScore;
   let lineClearCount = 0;
   outer: for (let y = area.length - 1; y > 0; --y) {
     let bonusPoints = 0;

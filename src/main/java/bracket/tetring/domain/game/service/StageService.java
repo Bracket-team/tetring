@@ -8,8 +8,8 @@ import bracket.tetring.domain.player.domain.PlayerBlock;
 import bracket.tetring.domain.player.domain.PlayerRelic;
 import bracket.tetring.domain.player.repository.PlayerBlockRepository;
 import bracket.tetring.domain.player.repository.PlayerRelicRepository;
+import bracket.tetring.domain.player.service.PlayerRelicService;
 import bracket.tetring.domain.store.domain.Store;
-import bracket.tetring.domain.store.service.StoreService;
 import bracket.tetring.global.error.ErrorCode;
 import bracket.tetring.global.exception.CustomException;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 import java.util.UUID;
 
 import static bracket.tetring.global.util.CalculateSystem.getStageGoal;
@@ -31,7 +33,9 @@ public class StageService {
     private final GameServiceHelper gameServiceHelper;
     private final PlayerBlockRepository playerBlockRepository;
     private final PlayerRelicRepository playerRelicRepository;
-    private final StoreService storeService;
+
+    private final PlayerRelicService playerRelicService;
+
     private final StageMapper stageMapper;
 
     //플레이어가 스테이지 시작 시 불러오는 함수
@@ -92,6 +96,21 @@ public class StageService {
             boolean existsInvestRelic = playerRelicRepository.existsByGameAndRelicNumber(game, 20);
             money = getTotalMoney(store.getMoneyLevel(), money, existsInvestRelic);
             store.setMoney(money);
+
+            //파괴 블록
+            Optional<PlayerRelic> playerBreakingRelic = playerRelicRepository.getPlayerRelicByGameAndRelicNumber(game, 28);
+            if(playerBreakingRelic.isPresent()) {
+                List<PlayerRelic> playerRelics = playerRelicRepository.findAllByGameOrderBySlotNumberAsc(game);
+                if(!(playerRelics.isEmpty())) {
+                    Random random = new Random();
+
+                    int index = random.nextInt(playerRelics.size());
+
+                    playerRelicService.throwPlayerRelic(playerId, playerRelics.get(index).getSlotNumber());
+                }
+                PlayerRelic breakingBlock = playerBreakingRelic.get();
+                breakingBlock.setRate(breakingBlock.getRate() + 2);
+            }
 
             // 스테이지 끝나면 상점 갈 것이기에 상점 미리 불러서 상점 정보 초기화
 //            storeService.setStoreBlockAndRelic(game, store);

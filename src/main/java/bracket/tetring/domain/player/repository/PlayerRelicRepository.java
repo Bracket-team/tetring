@@ -30,4 +30,7 @@ public interface PlayerRelicRepository extends JpaRepository<PlayerRelic, Player
 
     @Query("SELECT pr.relic.relicNumber FROM PlayerRelic pr WHERE pr.game = :game AND pr.slotNumber = :slotNumber")
     Optional<Integer> getRelicNumberByGameAndSlotNumber(@Param("game") Game game, @Param("slotNumber") Integer slotNumber);
+
+    @Query("SELECT pr FROM PlayerRelic pr WHERE pr.game = :game AND pr.relic.relicNumber = :relicNumber")
+    Optional<PlayerRelic> getPlayerRelicByGameAndRelicNumber(@Param("game") Game game, @Param("relicNumber") Integer relicNumber);
 }

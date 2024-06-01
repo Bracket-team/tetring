@@ -3,18 +3,22 @@ package bracket.tetring.domain.store.service;
 import bracket.tetring.domain.game.domain.Game;
 import bracket.tetring.domain.game.service.GameServiceHelper;
 import bracket.tetring.domain.player.domain.PlayerBlock;
+import bracket.tetring.domain.player.domain.PlayerRelic;
 import bracket.tetring.domain.player.dto.PlayerBlockDto;
 import bracket.tetring.domain.player.mapper.PlayerBlockMapper;
 import bracket.tetring.domain.player.repository.PlayerBlockRepository;
+import bracket.tetring.domain.player.repository.PlayerRelicRepository;
 import bracket.tetring.domain.store.domain.Store;
 import bracket.tetring.domain.store.domain.StoreBlock;
 import bracket.tetring.domain.store.dto.PurchaseBlockDto;
 import bracket.tetring.domain.store.repository.StoreBlockRepository;
 import bracket.tetring.global.exception.CustomException;
+import bracket.tetring.global.util.RelicNameMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import static bracket.tetring.global.error.ErrorCode.*;
@@ -25,8 +29,11 @@ import static bracket.tetring.global.util.CalculateSystem.getBlockMoney;
 public class StoreBlockService {
 
     private final GameServiceHelper gameServiceHelper;
+
     private final StoreBlockRepository storeBlockRepository;
     private final PlayerBlockRepository playerBlockRepository;
+    private final PlayerRelicRepository playerRelicRepository;
+
     private final PlayerBlockMapper playerBlockMapper;
 
     //블록 구매 시 메소드
@@ -60,6 +67,13 @@ public class StoreBlockService {
 
             //상점에 블록 삭제
             storeBlockRepository.delete(storeBlock);
+
+            //먹보 블럭 계수 증가
+            Optional<PlayerRelic> eatingPlayerBlock = playerRelicRepository.getPlayerRelicByGameAndRelicNumber(game, 24);
+            if(eatingPlayerBlock.isPresent()) {
+                PlayerRelic eatingBlock = eatingPlayerBlock.get();
+                eatingBlock.setRate(eatingBlock.getRate() + 0.1f);
+            }
         }
         return new PurchaseBlockDto(canBuy, playerMoney, playerBlockDto);
     }

@@ -69,7 +69,7 @@ public class RandomStoreHelper {
         }
     }
 
-    //일반 50%, 레어 40%, 유니크 50%
+    //일반 50%, 레어 40%, 유니크 10%
     private int generateRandomNumberWithProbability() {
         double rand = Math.random();
         if (rand < 0.5) { // 1~15번까지 50% 확률

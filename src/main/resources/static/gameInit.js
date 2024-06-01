@@ -17,9 +17,6 @@ function gameOver() {
     player.comboScore *= art.coefficient;
   }
 
-  console.log(player.lineScore);
-  console.log(player.comboScore);
-
   // 점수 표시 업데이트
   updateScore();
   updateFinalScore();
