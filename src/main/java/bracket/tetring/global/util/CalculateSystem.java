@@ -1,7 +1,6 @@
 package bracket.tetring.global.util;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public final class CalculateSystem {
 
@@ -23,20 +22,22 @@ public final class CalculateSystem {
 
     //스테이지 종료 후 돈 계산
     public static int getTotalMoney(int moneySystemLevel, int money, boolean haveInvestBlock) {
+        List<Integer> getMoneyPrice = new ArrayList<>(Arrays.asList(1, 3, 5, 10, 20));
         if(haveInvestBlock) {
           money += money / 4;
         }
-        return money + moneySystemLevel;
+        return money + getMoneyPrice.get(moneySystemLevel - 1);
     }
 
     //리롤 가격 계산
     public static int getRerollPrice(Integer rerollTime) {
-        return 5 + rerollTime * 5;
+        return 2 + rerollTime;
     }
 
     //머니 시스템 레벨업 계산
     public static int getMoneyLevelUpPrice(int moneyLevel) {
-        return moneyLevel * 5;
+        List<Integer> levelUpPrice = new ArrayList<>(Arrays.asList(3, 5, 10, 20));
+        return levelUpPrice.get(moneyLevel - 1);
     }
 
     //블록 가격 반환
