@@ -1,16 +1,24 @@
 package bracket.tetring.global.util;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public final class CalculateSystem {
 
     private static final Map<Integer, Long> stageGoals = new HashMap<>();
 
     static {
-        for(int i = 1; i <= 12; i++) {
-            stageGoals.put(i, i * 100L);
-        }
+        stageGoals.put(1, 800L);
+        stageGoals.put(2, 1400L);
+        stageGoals.put(3, 2000L);
+        stageGoals.put(4, 2400L);
+        stageGoals.put(5, 2800L);
+        stageGoals.put(6, 3200L);
+        stageGoals.put(7, 4000L);
+        stageGoals.put(8, 4600L);
+        stageGoals.put(9, 5000L);
+        stageGoals.put(10, 5800L);
+        stageGoals.put(11, 6200L);
+        stageGoals.put(12, 6600L);
     }
 
     private CalculateSystem() {
@@ -22,25 +30,27 @@ public final class CalculateSystem {
     }
 
     //스테이지 종료 후 돈 계산
-    public static int getTotalMoney(int moneySystemLevel, int money, boolean haveInvestBlock) {
+    public static int getTotalMoney(int moneyLevel, int money, boolean haveInvestBlock) {
+        List<Integer> getMoneyPrice = new ArrayList<>(Arrays.asList(1, 3, 5, 10, 20));
         if(haveInvestBlock) {
           money += money / 4;
         }
-        return money + moneySystemLevel;
+        return money + getMoneyPrice.get(moneyLevel - 1);
     }
 
     //리롤 가격 계산
     public static int getRerollPrice(Integer rerollTime) {
-        return 5 + rerollTime * 5;
+        return 2 + rerollTime;
     }
 
     //머니 시스템 레벨업 계산
     public static int getMoneyLevelUpPrice(int moneyLevel) {
-        return moneyLevel * 5;
+        List<Integer> levelUpPrice = new ArrayList<>(Arrays.asList(3, 5, 10, 20));
+        return levelUpPrice.get(moneyLevel - 1);
     }
 
     //블록 가격 반환
     public static int getBlockMoney() {
-        return 5;
+        return 2;
     }
 }
