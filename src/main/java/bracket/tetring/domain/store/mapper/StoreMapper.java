@@ -12,7 +12,6 @@ public class StoreMapper {
     public StoreDto toStoreDto(Store store, Integer rerollPrice) {
         StoreDto storeDto = new StoreDto();
 
-        storeDto.setRelicRerollTime(store.getRelicRerollTime());
         storeDto.setRerollPrice(rerollPrice);
         storeDto.setMoney(store.getMoney());
         storeDto.setMoneyLevel(store.getMoneyLevel());

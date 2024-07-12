@@ -19,16 +19,13 @@ public class RerollPriceHelper {
         boolean haveRerollBlock = playerRelicRepository.existsByGameAndRelicNumber(game, RelicNameMapper.getRelicNumber("리롤 블록"));
         boolean haveCouponBlock = playerRelicRepository.existsByGameAndRelicNumber(game, RelicNameMapper.getRelicNumber("쿠폰 블록"));
         int rerollTime = store.getRelicRerollTime();
-        if(haveCouponBlock) {
-            if(rerollTime == 0) {
-                return 0;
-            } else {
-                rerollTime -= 1;
-            }
+        if(haveCouponBlock && !store.getUseCoupon()) {
+            store.setUseCoupon(true);
+            return 0;
         }
         int rerollPrice = CalculateSystem.getRerollPrice(rerollTime);
         if(haveRerollBlock) {
-            rerollPrice -= 2;
+            rerollPrice -= 1;
         }
         return Math.max(rerollPrice, 0);
     }

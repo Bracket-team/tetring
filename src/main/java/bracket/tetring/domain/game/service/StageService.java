@@ -54,6 +54,7 @@ public class StageService {
         }
 
         store.setRelicRerollTime(0); //스테이지 시작 시 리롤 회수 초기화
+        store.setUseCoupon(false); //스테이지 시작 시 쿠폰 블록 사용 초기화
         game.setIsStore(false); //상점 아니라는 표시
 
         //스테이지 시작 전 사용자 블록, 유물 정보 전송

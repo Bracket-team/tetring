@@ -10,9 +10,6 @@ import lombok.*;
 @NoArgsConstructor
 public class StoreDto {
 
-    @JsonProperty("relic_reroll_time")
-    private Integer relicRerollTime;
-
     @JsonProperty("reroll_price")
     private Integer rerollPrice;
 

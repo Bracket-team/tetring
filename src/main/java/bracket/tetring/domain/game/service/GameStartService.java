@@ -128,7 +128,7 @@ public class GameStartService {
         playerBlockRepository.saveAll(playerBlocks);
     }
     private void initStore(Game game) {
-        Store store = new Store(game, 0, 5, 1);
+        Store store = new Store(game, 0, false, 5, 1);
         storeRepository.save(store);
     }
 }

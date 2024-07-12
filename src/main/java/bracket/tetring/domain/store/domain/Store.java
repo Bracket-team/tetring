@@ -23,6 +23,9 @@ public class Store {
     private Integer relicRerollTime;
 
     @Column(nullable = false)
+    private Boolean useCoupon;
+
+    @Column(nullable = false)
     private Integer money;
 
     @Column(nullable = false)
@@ -31,9 +34,10 @@ public class Store {
     public Store() {
     }
 
-    public Store(Game game, Integer relicRerollTime, Integer money, Integer moneyLevel) {
+    public Store(Game game, Integer relicRerollTime, Boolean useCoupon, Integer money, Integer moneyLevel) {
         this.game = game;
         this.relicRerollTime = relicRerollTime;
+        this.useCoupon = useCoupon;
         this.money = money;
         this.moneyLevel = moneyLevel;
     }

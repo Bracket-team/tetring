@@ -45,13 +45,6 @@ public class PlayerRelicService {
         Integer relicNumber = playerRelicRepository.getRelicNumberByGameAndSlotNumber(game, slotNumber).orElseThrow(
                 () -> new CustomException(ErrorCode.PLAYER_RELIC_NOT_FOUND)
         );
-        //쿠폰 블록일 경우 리롤 횟수 -1
-        if(relicNumber == RelicNameMapper.getRelicNumber("쿠폰 블록")) {
-            Store store = gameServiceHelper.getStore(game);
-            if(store.getRelicRerollTime() >= 1) {
-                store.setRelicRerollTime(store.getRelicRerollTime() - 1);
-            }
-        }
         playerRelicRepository.deletePlayerRelic(game, slotNumber);
     }
 
