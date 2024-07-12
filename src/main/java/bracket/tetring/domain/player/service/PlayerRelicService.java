@@ -42,9 +42,6 @@ public class PlayerRelicService {
     public void throwPlayerRelic(UUID playerId, Integer slotNumber) {
         Game game = gameServiceHelper.getGame(playerId);
 
-        Integer relicNumber = playerRelicRepository.getRelicNumberByGameAndSlotNumber(game, slotNumber).orElseThrow(
-                () -> new CustomException(ErrorCode.PLAYER_RELIC_NOT_FOUND)
-        );
         playerRelicRepository.deletePlayerRelic(game, slotNumber);
     }
 
